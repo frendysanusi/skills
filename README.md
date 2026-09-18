@@ -1,59 +1,50 @@
-# Personal Agent Skills
+# Personal agent skills
 
-This repository contains installable Agent Skills.
+This repo has installable Agent Skills. Edit mine here. Outsourced skills are copies: overwrite them from upstream when you want a newer version. A local edit to an outsourced file is discarded on refresh. If you need a real fork, copy it to a new name under Mine.
 
-## Skills
+## Mine
 
-### caveman
+| Skill | What it does |
+| --- | --- |
+| `create-jira-ticket` | Files a Jira issue from a brief via the Atlassian MCP (format, parent, assignee, backlog vs sprint). |
+| `github-issue-pr` | Files GitHub issues and PRs with `gh`. Issues describe behaviour; PRs can mention code internals. |
+| `pr-review` | Traces PR claims to the code, proves numbers with a dry run, and triages what to raise. Posts to GitHub only when asked. |
+| `verify-first-reuse-first` | For unfamiliar code: check the real code first, ship the smallest increment, then fold new helpers into existing ones. |
 
-Ultra-compressed terse-response mode that cuts output tokens while keeping full technical accuracy, across six intensity levels.
+## Outsourced
 
-### karpathy-guidelines
+| Skill | What it does | Source |
+| --- | --- | --- |
+| `caveman` | Terse replies that keep the technical content, six intensity levels. | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
+| `caveman-commit` | Conventional Commits: subject ≤50 chars, body only when the why is not obvious. | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
+| `humanizer` | Drops common AI writing patterns. Based on Wikipedia's Signs of AI writing. | [blader/humanizer](https://github.com/blader/humanizer) |
+| `karpathy-guidelines` | No speculative code, surgical diffs, explicit assumptions, check that it worked. | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) |
+| `ponytail` | Smallest change that works: YAGNI, stdlib first. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) |
+| `ponytail-review` | Review that only hunts over-engineering: what to delete and what replaces it. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) |
 
-Behavioral guidelines that reduce common LLM coding mistakes: no speculative code, surgical diffs, explicit assumptions, and verifiable success criteria.
-
-### verify-first-reuse-first
-
-A three-phase loop for unfamiliar codebases — ground every assumption against real code, build the smallest correct increment, then fold bespoke code into existing helpers.
-
-### create-jira-ticket
-
-Turns a rough brief into a well-structured Jira issue via the Atlassian MCP, handling description formatting, parent/epic linking, assignee resolution, and backlog or sprint placement.
-
-### github-issue-pr
-
-Drafts and files GitHub issues and pull requests with the `gh` CLI, keeping issues behaviour-only and PR change sections internals-aware.
-
-## Local Validation
-
-List skills from this repository:
+## Install
 
 ```bash
 npx skills add . --list
+npx skills add . --skill pr-review -a claude -g -y
 ```
 
-Install the caveman skill into Claude Code from this local checkout:
-
-```bash
-npx skills add . --skill caveman -a claude -g -y
-```
-
-Install the verify-first-reuse-first skill into Claude Code from this local checkout:
-
-```bash
-npx skills add . --skill verify-first-reuse-first -a claude -g -y
-```
-
-Replace `claude` with another supported agent target when installing for a different harness, and `--skill` with any skill name listed above.
-
-## Publishing
-
-Push this repository to GitHub, then install it from the published source:
+From GitHub:
 
 ```bash
 npx skills add frendysanusi/skills --list
-npx skills add frendysanusi/skills --skill caveman -a claude -g -y
-npx skills add frendysanusi/skills --skill verify-first-reuse-first -a claude -g -y
+npx skills add frendysanusi/skills --skill pr-review -a claude -g -y
 ```
 
-Once the repository is installed through the `skills` CLI, skills.sh can discover it through CLI telemetry and create the public listing.
+## Refresh outsourced skills
+
+From the repo root. Each command overwrites the local copy.
+
+```bash
+curl -sL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman/SKILL.md -o caveman/SKILL.md
+curl -sL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman-commit/SKILL.md -o caveman-commit/SKILL.md
+curl -sL https://raw.githubusercontent.com/blader/humanizer/main/SKILL.md -o humanizer/SKILL.md
+curl -sL https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/skills/karpathy-guidelines/SKILL.md -o karpathy-guidelines/SKILL.md
+curl -sL https://raw.githubusercontent.com/DietrichGebert/ponytail/main/skills/ponytail/SKILL.md -o ponytail/SKILL.md
+curl -sL https://raw.githubusercontent.com/DietrichGebert/ponytail/main/skills/ponytail-review/SKILL.md -o ponytail-review/SKILL.md
+```
