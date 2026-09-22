@@ -11,7 +11,7 @@ validation gate are in [AGENTS.md](AGENTS.md).
 | `github-issue-pr` | Files GitHub issues and PRs with `gh`. Issues describe behaviour, PRs carry code internals. |
 | `unslopify-comment` | Keeps code comments and docstrings few, short, and load-bearing. Defaults to none, and never touches the code. |
 | `pr-review` | Traces every PR claim to the code, proves numbers by running them, and triages what to raise. Posts to GitHub only when asked. |
-| `verify-first-reuse-first` | Read the real code before writing, ship the smallest increment, then fold new helpers into existing ones. |
+| `verify-first-build-least` | Ground the change in the real code, build the smallest thing that works, then fold what you wrote into what already exists. |
 
 ## Copied
 
@@ -22,8 +22,6 @@ Unmodified copies. Refreshing overwrites them, so any local edit is lost.
 | `caveman` | Terse replies that keep the technical content. | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
 | `caveman-commit` | Conventional Commits, subject under 50 characters. | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
 | `humanizer` | Rewrites AI-sounding prose without changing what it says. | [blader/humanizer](https://github.com/blader/humanizer) |
-| `karpathy-guidelines` | No speculative code, surgical diffs, stated assumptions, verified results. | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) |
-| `ponytail` | Smallest change that works. YAGNI, stdlib before dependencies. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) |
 
 ## Install
 
@@ -50,6 +48,4 @@ for d in skills/*/; do ln -sfn "$PWD/$d" ~/.claude/skills/"$(basename "$d")"; do
 curl -sL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman/SKILL.md -o skills/caveman/SKILL.md
 curl -sL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/skills/caveman-commit/SKILL.md -o skills/caveman-commit/SKILL.md
 curl -sL https://raw.githubusercontent.com/blader/humanizer/main/SKILL.md -o skills/humanizer/SKILL.md
-curl -sL https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/skills/karpathy-guidelines/SKILL.md -o skills/karpathy-guidelines/SKILL.md
-curl -sL https://raw.githubusercontent.com/DietrichGebert/ponytail/main/skills/ponytail/SKILL.md -o skills/ponytail/SKILL.md
 ```
