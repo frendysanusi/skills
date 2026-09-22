@@ -9,6 +9,7 @@ validation gate are in [AGENTS.md](AGENTS.md).
 | --- | --- |
 | `create-jira-ticket` | Files a Jira issue from a brief via the Atlassian MCP, including parent, assignee, and backlog placement. |
 | `github-issue-pr` | Files GitHub issues and PRs with `gh`. Issues describe behaviour, PRs carry code internals. |
+| `unslopify-comment` | Keeps code comments and docstrings few, short, and load-bearing. Defaults to none, and never touches the code. |
 | `pr-review` | Traces every PR claim to the code, proves numbers by running them, and triages what to raise. Posts to GitHub only when asked. |
 | `verify-first-reuse-first` | Read the real code before writing, ship the smallest increment, then fold new helpers into existing ones. |
 

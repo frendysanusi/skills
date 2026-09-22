@@ -10,7 +10,7 @@
     {
       "title": "Engineering discipline",
       "description": "Rules for writing code that keep the change small and grounded in the real codebase.",
-      "skills": ["verify-first-reuse-first", "ponytail", "karpathy-guidelines"]
+      "skills": ["verify-first-reuse-first", "ponytail", "karpathy-guidelines", "unslopify-comment"]
     },
     {
       "title": "Shipping work",
