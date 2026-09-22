@@ -1,0 +1,21 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Communication",
+      "description": "Changes how the output reads, either by shortening replies or by removing AI tells from prose.",
+      "skills": ["caveman", "humanizer"]
+    },
+    {
+      "title": "Engineering discipline",
+      "description": "Rules for writing code that keep the change small and grounded in the real codebase.",
+      "skills": ["verify-first-reuse-first", "ponytail", "karpathy-guidelines"]
+    },
+    {
+      "title": "Shipping work",
+      "description": "Reviewing and filing work in GitHub and Jira, plus commit messages.",
+      "skills": ["pr-review", "github-issue-pr", "create-jira-ticket", "caveman-commit"]
+    }
+  ]
+}
