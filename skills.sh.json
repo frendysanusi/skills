@@ -16,6 +16,11 @@
       "title": "Shipping work",
       "description": "Reviewing and filing work in GitHub and Jira, plus commit messages.",
       "skills": ["pr-review", "github-issue-pr", "create-jira-ticket", "caveman-commit"]
+    },
+    {
+      "title": "Research",
+      "description": "Running experiments and comparisons, and publishing what they found.",
+      "skills": ["research-report"]
     }
   ]
 }
