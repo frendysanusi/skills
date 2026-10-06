@@ -24,6 +24,7 @@ Prove each finding in the code rather than matching familiar patterns. An untrac
 - Read the PR description and commit messages. Authors state tradeoffs there and sometimes admit what was deferred.
 - Fetch as a ref, not a checkout: `git fetch origin pull/<N>/head:pr-<N>`. Avoid `gh pr checkout`, which mutates a tree that may hold uncommitted work. Mention the ref afterwards so it can be deleted.
 - Look at source and tests separately. Put attention where the logic concentrates.
+- Keep the review scoped to the requested repositories and traced dependencies. A nearby folder or shared domain terminology does not establish relevance.
 
 No spec is fine. Review the diff on its own terms.
 
@@ -42,6 +43,9 @@ Before describing what a change breaks:
 - Find the caller and read it. A field nothing reads cannot break anything.
 - Read back every line range you cite. Wrong line numbers make an author distrust the rest of the review.
 - Check CI, then check what green means. A suite can pass while never reaching the changed paths, and a test can assert the wrong value.
+- Trace missing values and explicit zero separately through selection, validation, and downstream callers. Write the exact field names and values in the example; `None` and `0` can produce different conditions and request states.
+- For bundled records, verify ingest order and the selection query. A stored value may never reach the consumer if another record wins. Any proposed fallback must account for stale evidence.
+- Distinguish a reproducible defect from a wording risk. Schema descriptions reaching an LLM do not prove a particular model output. Likewise, separate schema acceptance from a database failure actually reproduced; state the limits of isolated probes.
 
 When verification contradicts something you already said, correct it in one sentence and move on.
 
@@ -57,7 +61,9 @@ When verification contradicts something you already said, correct it in one sent
 
 **Do not prescribe a fix when the code cannot tell you which behavior was intended.**
 
-Some findings are bugs. Others are places where two behaviors are both defensible. For the second kind, write a question: state both options and what each costs.
+Some findings are bugs. Others are places where two behaviors are both defensible. For the second kind, use a **Question** block instead of **Suggestion**: ask which outcome is intended and explain the consequence of each. Do not disguise a preferred implementation as a domain question.
+
+An acknowledged breaking change may still deserve clarification about its operational consequences, but is not automatically an accidental defect. When one comment includes a verified bug and a separate domain choice, give the bug a suggestion and the choice a question.
 
 A confident wrong fix is worse than a clear question, and the author may know a domain constraint you do not.
 
@@ -69,7 +75,7 @@ Rank findings, raise what deserves attention now, and hold the rest in the summa
 
 Fair reasons to hold: it needs a pathological input, the affected field has no reader yet, it is performance with no wrong output, or the impact turned out smaller than first described.
 
-Each finding: claim, mechanism, worked example, consequence, suggestion.
+Each finding: claim, mechanism, worked example, consequence, and either a suggestion for a defect or a question for a design/domain decision.
 
 Skip: "There might be an issue with how the boundary is calculated, you may want to double-check the bunker handling."
 
@@ -89,10 +95,15 @@ Worked example:
 - What is correct / what breaks.
 
 Suggestion:
-- What to change, or both options if it is a decision.
+- What to change for a verified defect.
 ```
 
-Call that last block **Suggestion**, not Direction or Fix.
+For defects, call that last block **Suggestion**, not Direction or Fix. For design/domain decisions, replace it with:
+
+```
+Question:
+- Which outcome is intended, given the observed behavior and tradeoffs?
+```
 
 ## 6. Post Only When Asked
 
@@ -102,8 +113,10 @@ When asked to post, put comments in their *pending* review so they read and subm
 
 - No pending review yet: REST `POST /pulls/<N>/reviews` with `commit_id` and `comments`, omit `event`. That creates `PENDING`.
 - A pending review already exists: GitHub allows one per user per PR, and REST returns 422. Append with GraphQL `addPullRequestReviewThread` against its id.
+- Read pending drafts: list reviews to find the user's `PENDING` review, then query its `comments` through GraphQL, including bodies, paths, lines, and pagination. Verify drafts against the current PR head before editing.
 - Edit a pending comment: GraphQL `updatePullRequestReviewComment`. REST `PATCH /pulls/comments/<id>` 404s on pending comments; they also do not appear in `GET /pulls/<N>/comments`.
 - Comments must anchor inside a diff hunk. Outside one they fail silently or degrade to file-level. Check hunk ranges before choosing anchors.
 - Keep internal priority labels out of comment bodies. Severity ranking is for the summary, not the author's inbox.
+- After posting or editing, read every affected comment back and compare its saved body and anchor with the intended result. Confirm the review remains `PENDING`; editing drafts does not authorize submitting the review.
 
 Reviews and reports. Does not fix code, push, or submit.
