@@ -3,11 +3,11 @@ name: pr-review
 description: >
   Pull-request review that verifies every claim against the code before
   asserting it, proves numeric findings with a runnable dry run, and triages
-  what is worth raising. Use whenever the user asks to review a PR, review
-  changes, look at a diff, check a branch, or says "review #N", "what's wrong
-  with this PR", "is this mergeable", or hands you a PR URL. Also use for
-  casual asks like "take a look at 414?". Posts findings to GitHub only when
-  the user asks for that.
+  what is worth raising. Use when the user asks to review a pull request by
+  number, URL, or branch with an open PR, or says "review #N", "what's wrong
+  with this PR", "is this mergeable", or casually "take a look at 414?". For
+  an uncommitted local diff with no PR, leave it to the harness's own code
+  review command. Posts findings to GitHub only when the user asks for that.
 ---
 
 # PR Review

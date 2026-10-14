@@ -15,7 +15,7 @@ There is no application source tree, build output, or bundled test suite.
 - `npx skills add . --list` checks local repository discovery and lists all skills.
 - `npx skills use . --skill <skill-name>` renders a skill prompt bundle without installing it.
 - `python3 ~/.agents/skills/skill-creator/scripts/quick_validate.py skills/<skill-name>` validates a skill folder's required frontmatter and naming.
-- `ln -sfn "$PWD/skills/<skill-name>" ~/.claude/skills/<skill-name>` installs a skill by symlink, so an edit here is live in the next session.
+- `npx skills add frendysanusi/skills -g -s '*' -a claude-code -y` installs every skill for Claude Code; `npx skills update -g` picks up a pushed change.
 
 Run validation after every `SKILL.md` or metadata edit.
 
@@ -41,4 +41,4 @@ For PRs, include a short summary, affected skill names, validation commands run,
 
 ## Agent-Specific Instructions
 
-Do not commit private logs, credentials, local machine paths inside skill instructions, or generated artifacts. Never copy skill files into `~/.claude/skills/`; symlink them so this repo stays the only source. Keep skill instructions harness-neutral unless a skill explicitly targets one agent. Prefer focused edits over broad rewrites.
+Do not commit private logs, credentials, local machine paths inside skill instructions, or generated artifacts. Install only through `npx skills add frendysanusi/skills`; never copy or symlink skill files into an agent's skills directory by hand, so the published repo stays the only source. Keep skill instructions harness-neutral unless a skill explicitly targets one agent. Prefer focused edits over broad rewrites.

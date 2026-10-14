@@ -1,16 +1,16 @@
 ---
 name: github-issue-pr
 description: >-
-  Draft and file well-structured GitHub issues AND pull requests via the `gh` CLI. Use whenever the
-  user wants to create, file, open, draft, raise, or log a GitHub issue/ticket/bug/feature-request/task,
-  OR to open/draft/create a pull request (PR) — phrasings like "create an issue", "file a gh issue",
-  "open a github ticket", "log this bug", "raise an issue", "open a PR", "draft a pull request", "create
-  the PR", or when they hand you a chat/diff/piece of work and ask to capture it as a GitHub issue or PR.
-  Also use it to write an issue or PR body to a file for review before filing. It distinguishes bug
-  reports (reproduction + root cause + file:line) from feature/task issues (outcome + acceptance
-  criteria, NOT implementation), and issues (describe behaviour, NO code internals) from PRs (the
-  Changes section DOES carry code internals). This is for GitHub via `gh` — for Jira/Linear/Asana use
-  the dedicated ticket skill instead.
+  Draft and file well-structured GitHub issues AND pull requests via the `gh` CLI. Use when the user
+  wants to create, file, open, draft, raise, or log a GitHub issue/bug/feature-request/task, OR to
+  open/draft/create a pull request (PR) — phrasings like "file a gh issue", "open a github issue",
+  "open a PR", "draft a pull request", "create the PR", or when they hand you a chat/diff/piece of work
+  and ask to capture it as a GitHub issue or PR. A bare "create a ticket" or "log this bug" is GitHub
+  only when the context points there (a GitHub URL or remote, `gh`, a PR); when the tracker is unclear,
+  ask. If a repo- or org-specific issue or PR skill is available, defer to it.
+  Also writes the body to a file for review before filing. Separates bugs (repro + root cause +
+  file:line) from feature/task issues (outcome + acceptance criteria), and issues (behaviour, no code
+  internals) from PRs (Changes section carries code internals). Not for Jira/Linear/Asana.
 ---
 
 # GitHub Issue & PR

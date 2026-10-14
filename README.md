@@ -26,21 +26,20 @@ Unmodified copies. Refreshing overwrites them, so any local edit is lost.
 
 ## Install
 
+Every skill, user-level, for Claude Code:
+
 ```bash
-npx skills add . --list
-npx skills add . --skill pr-review -a claude -g -y
+npx skills add frendysanusi/skills -g -s '*' -a claude-code -y
 ```
 
-From GitHub, on another machine:
+For other agents, change `-a` or use `--all` for every agent. Run it from any
+directory. Without `-g` it installs into the current
+directory as a project.
+
+After pushing a change:
 
 ```bash
-npx skills add frendysanusi/skills --skill pr-review -a claude -g -y
-```
-
-This machine symlinks instead, so an edit here is live in the next session:
-
-```bash
-for d in skills/*/; do ln -sfn "$PWD/$d" ~/.claude/skills/"$(basename "$d")"; done
+npx skills update -g
 ```
 
 ## Refresh the copies
