@@ -7,6 +7,7 @@ validation gate are in [AGENTS.md](AGENTS.md).
 
 | Skill | What it does |
 | --- | --- |
+| `build-frontend-from-design` | Builds a screen from Figma or screenshots with the app's components and tokens, checks it in a real browser, then reviews and ships it. |
 | `create-jira-ticket` | Files a Jira issue from a brief via the Atlassian MCP, including parent, assignee, and backlog placement. |
 | `github-issue-pr` | Files GitHub issues and PRs with `gh`. Issues describe behaviour, PRs carry code internals. |
 | `research-report` | Plans and runs any research or experiment through code (baselines, controls, repeated runs), tries third-party tools in isolation, and publishes an evidence-backed HTML report that leads with the answer. |
