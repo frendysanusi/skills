@@ -14,6 +14,7 @@ validation gate are in [AGENTS.md](AGENTS.md).
 | `unslopify-comment` | Keeps code comments and docstrings few, short, and load-bearing. Defaults to none, and never touches the code. |
 | `pr-review` | Traces every PR claim to the code, proves numbers by running them, and triages what to raise. Posts to GitHub only when asked. |
 | `verify-first-build-least` | Ground the change in the real code, build the smallest thing that works, then fold what you wrote into what already exists. |
+| `write-implementation-plan` | Writes a local HTML plan grounded in the code: decisions with recommendations, changes per repo, tests, and an estimate by user story at agent pace. |
 
 ## Copied
 

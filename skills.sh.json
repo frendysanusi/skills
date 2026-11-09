@@ -18,6 +18,11 @@
       "skills": ["pr-review", "github-issue-pr", "create-jira-ticket", "caveman-commit"]
     },
     {
+      "title": "Planning",
+      "description": "Turning a ticket into a plan with decisions, changes, tests and an estimate.",
+      "skills": ["write-implementation-plan"]
+    },
+    {
       "title": "Research",
       "description": "Running experiments and comparisons, and publishing what they found.",
       "skills": ["research-report"]
